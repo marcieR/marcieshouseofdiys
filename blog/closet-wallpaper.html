@@ -14,74 +14,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The boldest thing I've ever done inside a closet (and why you should try it) — Marcie's House of DIYs</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#F9F5EF;--warm-white:#FDFBF8;--linen:#EDE8DE;--tan:#C9B99A;--sage:#8A9E8C;--deep-green:#2E4A31;--charcoal:#2C2A26;--muted:#7A7269;--gold:#B8944A;}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(249,245,239,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linen);}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--charcoal);text-decoration:none;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--charcoal);}
-.nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-white);background:var(--deep-green);padding:0.6rem 1.4rem;border-radius:2px;text-decoration:none;transition:background 0.2s;}
-.nav-cta:hover{background:var(--charcoal);}
-.btn-primary{background:var(--deep-green);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;display:inline-block;}
-.btn-primary:hover{background:var(--charcoal);transform:translateY(-1px);}
-.btn-secondary{color:var(--charcoal);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--tan);padding-bottom:2px;transition:border-color 0.2s,color 0.2s;}
-.btn-secondary:hover{color:var(--deep-green);border-color:var(--deep-green);}
-.section-label{font-size:0.7rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;color:var(--charcoal);margin-bottom:1.25rem;}
-.section-title em{font-style:italic;}
-.section-body{font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:2rem;}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
-footer{background:var(--charcoal);padding:3rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);}
-.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
-.footer-links a{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,232,222,0.5);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--cream);}
-.footer-ig{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);text-decoration:none;}
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
-  footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;}
-}
-
-.post-hero{padding-top:80px;background:var(--charcoal);position:relative;overflow:hidden;}
-.post-hero-img{width:100%;height:520px;object-fit:cover;opacity:0.45;display:block;}
-.post-hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 6rem;}
-.post-back{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);text-decoration:none;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:6px;}
-.post-back:hover{color:var(--linen);}
-.post-cat{font-size:0.72rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--sage);margin-bottom:0.75rem;}
-.post-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.12;color:var(--warm-white);max-width:820px;margin-bottom:1rem;}
-.post-meta{font-size:0.8rem;color:rgba(237,232,222,0.55);letter-spacing:0.06em;}
-.post-body{max-width:760px;margin:0 auto;padding:4rem 2rem 5rem;}
-.post-body h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--charcoal);margin:2.5rem 0 0.75rem;line-height:1.3;}
-.post-body p{font-size:1rem;font-weight:300;line-height:1.9;color:var(--charcoal);margin-bottom:1.25rem;}
-.post-body ul,.post-body ol{margin:0.5rem 0 1.25rem 1.5rem;}
-.post-body li{font-size:1rem;font-weight:300;line-height:1.8;color:var(--charcoal);margin-bottom:0.4rem;}
-.pullquote{font-family:'Playfair Display',serif;font-size:1.35rem;font-style:italic;color:var(--deep-green);border-left:3px solid var(--sage);padding-left:1.5rem;margin:2rem 0;line-height:1.5;}
-.post-img{width:100%;border-radius:2px;margin:2rem 0;object-fit:cover;display:block;}
-.post-img-caption{font-size:0.8rem;color:var(--muted);text-align:center;margin-top:-1.5rem;margin-bottom:2rem;font-style:italic;}
-.supply-list{background:var(--linen);border-radius:2px;padding:1.5rem 2rem;margin:2rem 0;}
-.supply-list h4{font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.supply-list ul{margin-left:1.25rem;}
-.supply-list li{font-size:0.9rem;font-weight:400;color:var(--charcoal);line-height:1.9;}
-.tip-box{background:var(--warm-white);border:1px solid var(--linen);border-left:3px solid var(--sage);padding:1.25rem 1.5rem;margin:2rem 0;}
-.tip-box strong{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.5rem;}
-.tip-box p{font-size:0.9rem;margin:0;color:var(--charcoal);}
-.post-nav{background:var(--linen);padding:3rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
-.post-nav-label{font-size:0.7rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
-.post-nav-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);text-decoration:none;display:block;}
-.post-nav-title:hover{color:var(--deep-green);}
-.post-tags{display:flex;flex-wrap:wrap;gap:8px;margin:2rem 0;}
-.post-tag{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;background:var(--linen);color:var(--muted);padding:0.3rem 0.75rem;border-radius:2px;}
-@media(max-width:900px){
-  .post-hero-overlay{padding:3rem 2rem;}
-  .post-body{padding:2.5rem 1.25rem;}
-  .post-nav{grid-template-columns:1fr;padding:3rem 2rem;}
-}
-</style>
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/base.css">
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/post.css">
 </head>
 <body>
 <nav>

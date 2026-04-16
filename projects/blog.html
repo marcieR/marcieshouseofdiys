@@ -13,69 +13,8 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Marcie's House of DIYs</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#F9F5EF;--warm-white:#FDFBF8;--linen:#EDE8DE;--tan:#C9B99A;--sage:#8A9E8C;--deep-green:#2E4A31;--charcoal:#2C2A26;--muted:#7A7269;--gold:#B8944A;}
-*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
-body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(249,245,239,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linen);}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--charcoal);text-decoration:none;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--charcoal);}
-.nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-white);background:var(--deep-green);padding:0.6rem 1.4rem;border-radius:2px;text-decoration:none;transition:background 0.2s;}
-.nav-cta:hover{background:var(--charcoal);}
-.btn-primary{background:var(--deep-green);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.9rem 2rem;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;display:inline-block;}
-.btn-primary:hover{background:var(--charcoal);transform:translateY(-1px);}
-.btn-secondary{color:var(--charcoal);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--tan);padding-bottom:2px;transition:border-color 0.2s,color 0.2s;}
-.btn-secondary:hover{color:var(--deep-green);border-color:var(--deep-green);}
-.section-label{font-size:0.7rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.2;color:var(--charcoal);margin-bottom:1.25rem;}
-.section-title em{font-style:italic;}
-.section-body{font-size:0.95rem;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:2rem;}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
-footer{background:var(--charcoal);padding:3rem 5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);}
-.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
-.footer-links a{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(237,232,222,0.5);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--cream);}
-.footer-ig{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);text-decoration:none;}
-@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;}}
-
-.blog-hero{padding:8rem 5rem 4rem;background:var(--warm-white);text-align:center;border-bottom:1px solid var(--linen);}
-.blog-hero .section-title{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;}
-.blog-hero p{font-size:1rem;font-weight:300;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8;}
-.blog-filters{padding:1.5rem 5rem;background:var(--cream);display:flex;gap:0.75rem;flex-wrap:wrap;border-bottom:1px solid var(--linen);}
-.filter-btn{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:2px;border:1px solid var(--linen);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
-.filter-btn:hover,.filter-btn.active{background:var(--deep-green);color:var(--warm-white);border-color:var(--deep-green);}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding:4rem 5rem;max-width:1300px;margin:0 auto;}
-.blog-card{background:var(--warm-white);border:1px solid var(--linen);border-radius:2px;overflow:hidden;transition:transform 0.2s,border-color 0.2s;text-decoration:none;color:inherit;display:block;}
-.blog-card:hover{transform:translateY(-4px);border-color:var(--tan);}
-.blog-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--linen);}
-.blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
-.blog-card:hover .blog-card-img img{transform:scale(1.05);}
-.blog-card-body{padding:1.5rem;}
-.blog-card-cat{font-size:0.65rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);margin-bottom:0.5rem;}
-.blog-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.3;color:var(--charcoal);margin-bottom:0.6rem;}
-.blog-card-excerpt{font-size:0.85rem;font-weight:300;line-height:1.75;color:var(--muted);margin-bottom:1rem;}
-.blog-card-meta{display:flex;justify-content:space-between;align-items:center;}
-.blog-card-date{font-size:0.72rem;color:var(--tan);letter-spacing:0.06em;}
-.blog-read-more{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-green);border-bottom:1px solid var(--sage);padding-bottom:1px;}
-.blog-card.featured-post{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;}
-.blog-card.featured-post .blog-card-img{aspect-ratio:unset;height:100%;}
-.blog-card.featured-post .blog-card-body{padding:3rem;display:flex;flex-direction:column;justify-content:center;}
-.blog-card.featured-post .blog-card-title{font-size:1.6rem;margin-bottom:1rem;}
-.featured-badge{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--deep-green);background:var(--linen);padding:0.3rem 0.75rem;border-radius:2px;margin-bottom:1rem;}
-.blog-cta{background:var(--deep-green);padding:5rem;text-align:center;}
-.blog-cta .cta-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);margin-bottom:1rem;}
-.blog-cta p{font-size:0.95rem;font-weight:300;color:rgba(237,232,222,0.7);max-width:480px;margin:0 auto 2rem;line-height:1.8;}
-@media(max-width:900px){
-  .blog-grid{grid-template-columns:1fr;padding:2rem 1.5rem;}
-  .blog-card.featured-post{grid-column:span 1;grid-template-columns:1fr;}
-  .blog-card.featured-post .blog-card-img{height:240px;}
-  .blog-hero,.blog-filters,.blog-cta{padding:4rem 2rem;}
-}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}</style>
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/base.css">
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/blog-index.css">
 </head>
 <body>
 <nav>
