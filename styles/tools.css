@@ -68,11 +68,6 @@
 .ref-table tr:last-child td{border-bottom:none;}
 .ref-table tr:hover td{background:var(--linen);}
 
-/* Corner illustrations */
-.corner-illus-wrap{margin:1.5rem 0 0.5rem;background:var(--cream);border:1px solid var(--linen);border-radius:2px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:center;}
-.corner-svg{width:100%;max-width:360px;display:block;}
-.corner-svg-hide{display:none;}
-
 @media(max-width:700px){
   .tools-hero{padding:100px 1.5rem 3rem;}
   .tools-body{padding:2.5rem 1.25rem 4rem;}
