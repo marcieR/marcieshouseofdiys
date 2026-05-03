@@ -132,6 +132,83 @@
 
     </div>
 
+    <!-- Corner illustrations -->
+    <div class="corner-illus-wrap">
+
+      <!-- Inside corner: ceiling visible, walls recede to back center -->
+      <svg id="svg-inside" viewBox="0 0 320 192" xmlns="http://www.w3.org/2000/svg" class="corner-svg">
+        <defs>
+          <filter id="sk-i" x="-3%" y="-3%" width="106%" height="106%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="9" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <pattern id="hl-i" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-38)">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#C9B99A" stroke-width="0.7"/>
+          </pattern>
+          <pattern id="hr-i" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(38)">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#B8AA96" stroke-width="0.7"/>
+          </pattern>
+        </defs>
+        <!-- Ceiling (lightest — recedes to back corner) -->
+        <polygon points="16,14 304,14 160,38" fill="#FDFBF8" stroke="#2C2A26" stroke-width="1.4" stroke-linejoin="round" filter="url(#sk-i)"/>
+        <!-- Left wall -->
+        <polygon points="16,14 160,38 160,178 16,156" fill="#EDE8DE" stroke="#2C2A26" stroke-width="1.4" stroke-linejoin="round" filter="url(#sk-i)"/>
+        <polygon points="16,14 160,38 160,178 16,156" fill="url(#hl-i)" opacity="0.4"/>
+        <!-- Right wall (slightly darker) -->
+        <polygon points="304,14 160,38 160,178 304,156" fill="#E4DDD4" stroke="#2C2A26" stroke-width="1.4" stroke-linejoin="round" filter="url(#sk-i)"/>
+        <polygon points="304,14 160,38 160,178 304,156" fill="url(#hr-i)" opacity="0.3"/>
+        <!-- Crown molding — left piece -->
+        <polygon points="16,14 160,38 160,54 16,30" fill="#2E4A31" fill-opacity="0.78" stroke="#1a2e1c" stroke-width="1.1" stroke-linejoin="round" filter="url(#sk-i)"/>
+        <!-- Crown molding — right piece (slightly less prominent) -->
+        <polygon points="304,14 160,38 160,54 304,30" fill="#2E4A31" fill-opacity="0.56" stroke="#1a2e1c" stroke-width="1.1" stroke-linejoin="round" filter="url(#sk-i)"/>
+        <!-- Miter joint (gold) -->
+        <line x1="160" y1="38" x2="160" y2="54" stroke="#B8944A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- "CROWN" label inside strip -->
+        <text x="74" y="34" text-anchor="middle" font-family="Jost,sans-serif" font-size="8" fill="#FDFBF8" font-weight="500" letter-spacing="1.5">CROWN</text>
+        <!-- Miter leader -->
+        <line x1="163" y1="47" x2="192" y2="64" stroke="#B8944A" stroke-width="0.9" stroke-dasharray="3,2"/>
+        <text x="195" y="68" font-family="Jost,sans-serif" font-size="8.5" fill="#B8944A">miter joint</text>
+        <!-- Footer label -->
+        <text x="160" y="189" text-anchor="middle" font-family="'Playfair Display',serif" font-size="12" font-style="italic" fill="#7A7269">inside corner</text>
+      </svg>
+
+      <!-- Outside corner: corner protrudes toward viewer, no ceiling visible -->
+      <svg id="svg-outside" viewBox="0 0 320 192" xmlns="http://www.w3.org/2000/svg" class="corner-svg corner-svg-hide">
+        <defs>
+          <filter id="sk-o" x="-3%" y="-3%" width="106%" height="106%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="14" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <pattern id="hl-o" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(-38)">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#C9B99A" stroke-width="0.7"/>
+          </pattern>
+          <pattern id="hr-o" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(38)">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#A89E8E" stroke-width="0.7"/>
+          </pattern>
+        </defs>
+        <!-- Left wall face (lighter — faces viewer) -->
+        <polygon points="16,38 160,14 160,178 16,158" fill="#EDE8DE" stroke="#2C2A26" stroke-width="1.4" stroke-linejoin="round" filter="url(#sk-o)"/>
+        <polygon points="16,38 160,14 160,178 16,158" fill="url(#hl-o)" opacity="0.4"/>
+        <!-- Right wall face (darker — in shadow) -->
+        <polygon points="304,38 160,14 160,178 304,158" fill="#D8D1C8" stroke="#2C2A26" stroke-width="1.4" stroke-linejoin="round" filter="url(#sk-o)"/>
+        <polygon points="304,38 160,14 160,178 304,158" fill="url(#hr-o)" opacity="0.5"/>
+        <!-- Crown molding — left piece -->
+        <polygon points="16,38 160,14 160,30 16,54" fill="#2E4A31" fill-opacity="0.78" stroke="#1a2e1c" stroke-width="1.1" stroke-linejoin="round" filter="url(#sk-o)"/>
+        <!-- Crown molding — right piece (slightly less prominent) -->
+        <polygon points="304,38 160,14 160,30 304,54" fill="#2E4A31" fill-opacity="0.56" stroke="#1a2e1c" stroke-width="1.1" stroke-linejoin="round" filter="url(#sk-o)"/>
+        <!-- Miter joint (gold) -->
+        <line x1="160" y1="14" x2="160" y2="30" stroke="#B8944A" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- "CROWN" label inside left strip -->
+        <text x="74" y="44" text-anchor="middle" font-family="Jost,sans-serif" font-size="8" fill="#FDFBF8" font-weight="500" letter-spacing="1.5">CROWN</text>
+        <!-- Miter leader -->
+        <line x1="163" y1="22" x2="192" y2="40" stroke="#B8944A" stroke-width="0.9" stroke-dasharray="3,2"/>
+        <text x="195" y="44" font-family="Jost,sans-serif" font-size="8.5" fill="#B8944A">miter joint</text>
+        <!-- Footer label -->
+        <text x="160" y="189" text-anchor="middle" font-family="'Playfair Display',serif" font-size="12" font-style="italic" fill="#7A7269">outside corner</text>
+      </svg>
+
+    </div><!-- /.corner-illus-wrap -->
+
     <div id="angle-result" class="calc-result">
       <div class="angle-grid">
         <div class="angle-box">
@@ -277,6 +354,11 @@ function calcAngles() {
 
   document.getElementById('angle-note').innerHTML =
     dirNote + ' Always test on scrap before cutting your finish pieces.';
+
+  // Toggle illustration
+  const isInside = cornerType === 'inside';
+  document.getElementById('svg-inside').classList.toggle('corner-svg-hide', !isInside);
+  document.getElementById('svg-outside').classList.toggle('corner-svg-hide', isInside);
 }
 
 // Wire up auto-update on every angle input change
