@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ369TBK74"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YQ369TBK74');
+</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown Molding Calculator — Marcie's House of DIYs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/base.css">
+<link rel="stylesheet" href="/marcieshouseofdiys/styles/tools.css">
+</head>
+<body>
+
+<nav>
+  <a href="/marcieshouseofdiys/" class="nav-logo">Marcie's House of DIYs</a>
+  <ul class="nav-links">
+    <li><a href="/marcieshouseofdiys/index.html#projects">Projects</a></li>
+    <li><a href="/marcieshouseofdiys/about.html">About</a></li>
+    <li><a href="/marcieshouseofdiys/blog/blog.html">Blog</a></li>
+    <li><a href="/marcieshouseofdiys/tools/crown-molding-calculator.html">Tools</a></li>
+    <li><a href="/marcieshouseofdiys/index.html#contact">Contact</a></li>
+  </ul>
+  <a href="/marcieshouseofdiys/index.html#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<section class="tools-hero">
+  <div class="tools-hero-inner">
+    <p class="section-label">Tools</p>
+    <h1 class="tools-hero-title">Crown Molding Calculator</h1>
+    <p class="tools-hero-sub">Figure out how much molding to buy and exactly what angles to cut — without the guesswork.</p>
+  </div>
+</section>
+
+<div class="tools-body">
+
+  <!-- ── Calculator 1: Linear Footage ── -->
+  <div class="calc-card">
+    <p class="calc-card-label">Step 1</p>
+    <h2>How much molding do I need?</h2>
+    <p class="calc-card-desc">Enter your room dimensions and we'll calculate total linear feet including a waste allowance for cuts and mistakes.</p>
+
+    <div class="calc-form">
+      <div class="calc-row">
+        <label for="len-ft">Room length</label>
+        <div class="ft-in-wrap">
+          <input type="number" id="len-ft" min="0" placeholder="0"> <span>ft</span>
+          <input type="number" id="len-in" min="0" max="11" placeholder="0"> <span>in</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="wid-ft">Room width</label>
+        <div class="ft-in-wrap">
+          <input type="number" id="wid-ft" min="0" placeholder="0"> <span>ft</span>
+          <input type="number" id="wid-in" min="0" max="11" placeholder="0"> <span>in</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="doors">Doorways to skip</label>
+        <div>
+          <input type="number" id="doors" min="0" placeholder="0" class="inline-sm">
+          <div class="calc-hint">Each doorway assumed 3 ft wide</div>
+        </div>
+      </div>
+      <div class="calc-row">
+        <label for="waste">Waste factor</label>
+        <select id="waste">
+          <option value="10">10% — careful, experienced cutter</option>
+          <option value="15" selected>15% — recommended for most</option>
+          <option value="20">20% — first time or complex room</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn-primary calc-btn" onclick="calcLinear()">Calculate footage</button>
+    </div>
+
+    <div id="linear-result" class="calc-result hidden">
+      <div class="result-primary">
+        <span class="result-num" id="linear-num">—</span>
+        <span class="result-unit">linear feet</span>
+      </div>
+      <div class="result-sub" id="linear-sub"></div>
+    </div>
+  </div>
+
+  <!-- ── Calculator 2: Cut Angles ── -->
+  <div class="calc-card">
+    <p class="calc-card-label">Step 2</p>
+    <h2>What angles do I cut?</h2>
+    <p class="calc-card-desc">Select your molding's spring angle and corner type to get the exact miter and bevel settings for your compound miter saw.</p>
+
+    <div class="calc-form">
+      <div class="calc-row">
+        <label>Spring angle</label>
+        <div>
+          <div class="spring-presets" id="spring-presets">
+            <button type="button" class="spring-btn active" data-angle="38" onclick="setSpring(this, 38)">38° <span style="font-weight:300;opacity:0.7;">(most common)</span></button>
+            <button type="button" class="spring-btn" data-angle="45" onclick="setSpring(this, 45)">45°</button>
+            <button type="button" class="spring-btn" data-angle="custom" onclick="setSpring(this, 'custom')">Custom</button>
+          </div>
+          <div id="custom-spring-wrap" style="display:none;margin-top:0.6rem;">
+            <div class="ft-in-wrap">
+              <input type="number" id="custom-spring" min="1" max="89" placeholder="e.g. 52"> <span>degrees</span>
+            </div>
+          </div>
+          <div class="calc-hint">The spring angle is stamped on the back of most molding, or check the manufacturer spec.</div>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label>Corner type</label>
+        <select id="corner-type">
+          <option value="inside">Inside corner (standard room corner)</option>
+          <option value="outside">Outside corner (protruding wall)</option>
+        </select>
+      </div>
+
+      <div class="calc-row">
+        <label for="corner-angle">Wall angle</label>
+        <div>
+          <div class="ft-in-wrap">
+            <input type="number" id="corner-angle" min="1" max="179" value="90" class="inline-sm"> <span>degrees</span>
+          </div>
+          <div class="calc-hint">Standard rooms are 90°. Bay windows or angled walls will differ.</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary calc-btn" onclick="calcAngles()">Get cut angles</button>
+    </div>
+
+    <div id="angle-result" class="calc-result hidden">
+      <div class="angle-grid">
+        <div class="angle-box">
+          <div class="angle-box-label">Miter angle</div>
+          <div class="angle-box-value"><span id="miter-val">—</span><span class="angle-box-deg">°</span></div>
+        </div>
+        <div class="angle-box">
+          <div class="angle-box-label">Bevel angle</div>
+          <div class="angle-box-value"><span id="bevel-val">—</span><span class="angle-box-deg">°</span></div>
+        </div>
+      </div>
+      <p class="angle-note" id="angle-note"></p>
+    </div>
+  </div>
+
+  <!-- ── Reference Table ── -->
+  <div class="calc-card">
+    <p class="calc-card-label">Quick reference</p>
+    <h2>Common spring angle settings</h2>
+    <p class="calc-card-desc">Standard compound miter saw settings for 90° corners. These are the two most common molding profiles you'll find at any home center.</p>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Spring angle</th>
+          <th>Corner</th>
+          <th>Miter</th>
+          <th>Bevel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>38°</td><td>Inside</td><td>31.6°</td><td>33.9°</td></tr>
+        <tr><td>38°</td><td>Outside</td><td>31.6°</td><td>33.9°</td></tr>
+        <tr><td>45°</td><td>Inside</td><td>35.3°</td><td>30.0°</td></tr>
+        <tr><td>45°</td><td>Outside</td><td>35.3°</td><td>30.0°</td></tr>
+      </tbody>
+    </table>
+    <p class="angle-note" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--linen);">The miter and bevel angles are the same for both inside and outside corners — what changes is the <em>direction</em> you rotate and tilt the saw. For inside corners, tilt the blade toward the fence. For outside corners, tilt away. Always do a test cut on scrap first.</p>
+  </div>
+
+</div><!-- /.tools-body -->
+
+<footer>
+  <span class="footer-logo">Marcie's House of DIYs</span>
+  <ul class="footer-links">
+    <li><a href="/marcieshouseofdiys/index.html#projects">Projects</a></li>
+    <li><a href="/marcieshouseofdiys/about.html">About</a></li>
+    <li><a href="/marcieshouseofdiys/blog/blog.html">Blog</a></li>
+    <li><a href="/marcieshouseofdiys/tools/crown-molding-calculator.html">Tools</a></li>
+    <li><a href="/marcieshouseofdiys/index.html#contact">Contact</a></li>
+  </ul>
+  <a href="https://instagram.com/marcieshouseofdiys" class="footer-ig">@marcieshouseofdiys</a>
+</footer>
+
+<script>
+// ── Linear footage calculator ──
+function calcLinear() {
+  const lenFt  = parseFloat(document.getElementById('len-ft').value)  || 0;
+  const lenIn  = parseFloat(document.getElementById('len-in').value)  || 0;
+  const widFt  = parseFloat(document.getElementById('wid-ft').value)  || 0;
+  const widIn  = parseFloat(document.getElementById('wid-in').value)  || 0;
+  const doors  = parseFloat(document.getElementById('doors').value)   || 0;
+  const waste  = parseFloat(document.getElementById('waste').value)   || 15;
+
+  const lengthFt = lenFt + lenIn / 12;
+  const widthFt  = widFt + widIn / 12;
+
+  if (lengthFt === 0 && widthFt === 0) {
+    alert('Please enter at least one room dimension.');
+    return;
+  }
+
+  const perimeter   = 2 * (lengthFt + widthFt);
+  const deductions  = doors * 3;
+  const net         = Math.max(0, perimeter - deductions);
+  const withWaste   = net * (1 + waste / 100);
+  const rounded     = Math.ceil(withWaste);
+
+  document.getElementById('linear-num').textContent = rounded;
+  document.getElementById('linear-sub').innerHTML =
+    'Perimeter: ' + net.toFixed(1) + ' ft &nbsp;&middot;&nbsp; ' +
+    'With ' + waste + '% waste: ' + withWaste.toFixed(1) + ' ft &nbsp;&middot;&nbsp; ' +
+    'Rounded up to nearest foot: <strong>' + rounded + ' ft</strong>';
+
+  const el = document.getElementById('linear-result');
+  el.classList.remove('hidden');
+}
+
+// ── Spring angle preset buttons ──
+let currentSpring = 38;
+
+function setSpring(btn, angle) {
+  document.querySelectorAll('.spring-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const wrap = document.getElementById('custom-spring-wrap');
+  if (angle === 'custom') {
+    wrap.style.display = 'block';
+    currentSpring = null;
+  } else {
+    wrap.style.display = 'none';
+    currentSpring = angle;
+  }
+}
+
+// ── Cut angle calculator ──
+function calcAngles() {
+  let spring = currentSpring;
+  if (spring === null) {
+    spring = parseFloat(document.getElementById('custom-spring').value);
+    if (!spring || spring <= 0 || spring >= 90) {
+      alert('Please enter a spring angle between 1° and 89°.');
+      return;
+    }
+  }
+
+  const cornerAngle = parseFloat(document.getElementById('corner-angle').value) || 90;
+  const cornerType  = document.getElementById('corner-type').value;
+
+  if (cornerAngle <= 0 || cornerAngle >= 180) {
+    alert('Please enter a wall angle between 1° and 179°.');
+    return;
+  }
+
+  const S = spring * Math.PI / 180;
+  const C = cornerAngle * Math.PI / 180;
+
+  const miterRad = Math.atan(Math.sin(S) / Math.tan(C / 2));
+  const bevelRad = Math.asin(Math.cos(S) * Math.sin(C / 2));
+
+  const miter = (miterRad * 180 / Math.PI).toFixed(1);
+  const bevel = (bevelRad * 180 / Math.PI).toFixed(1);
+
+  document.getElementById('miter-val').textContent = miter;
+  document.getElementById('bevel-val').textContent = bevel;
+
+  const dirNote = cornerType === 'inside'
+    ? 'For an <strong>inside corner</strong>: tilt the saw blade toward the fence. Cut left and right pieces as mirror images of each other.'
+    : 'For an <strong>outside corner</strong>: tilt the saw blade away from the fence. Cut left and right pieces as mirror images of each other.';
+
+  document.getElementById('angle-note').innerHTML =
+    dirNote + ' Always test on scrap before cutting your finish pieces.';
+
+  const el = document.getElementById('angle-result');
+  el.classList.remove('hidden');
+}
+
+// Fade-up animations
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if (x.isIntersecting) x.target.classList.add('visible');
+}), { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
