@@ -130,10 +130,9 @@
         </div>
       </div>
 
-      <button type="button" class="btn-primary calc-btn" onclick="calcAngles()">Get cut angles</button>
     </div>
 
-    <div id="angle-result" class="calc-result hidden">
+    <div id="angle-result" class="calc-result">
       <div class="angle-grid">
         <div class="angle-box">
           <div class="angle-box-label">Miter angle</div>
@@ -234,6 +233,7 @@ function setSpring(btn, angle) {
     wrap.style.display = 'none';
     currentSpring = angle;
   }
+  calcAngles();
 }
 
 // ── Cut angle calculator ──
@@ -242,16 +242,20 @@ function calcAngles() {
   if (spring === null) {
     spring = parseFloat(document.getElementById('custom-spring').value);
     if (!spring || spring <= 0 || spring >= 90) {
-      alert('Please enter a spring angle between 1° and 89°.');
+      document.getElementById('miter-val').textContent = '—';
+      document.getElementById('bevel-val').textContent = '—';
+      document.getElementById('angle-note').textContent = 'Enter a spring angle between 1° and 89°.';
       return;
     }
   }
 
-  const cornerAngle = parseFloat(document.getElementById('corner-angle').value) || 90;
+  const cornerAngle = parseFloat(document.getElementById('corner-angle').value);
   const cornerType  = document.getElementById('corner-type').value;
 
-  if (cornerAngle <= 0 || cornerAngle >= 180) {
-    alert('Please enter a wall angle between 1° and 179°.');
+  if (!cornerAngle || cornerAngle <= 0 || cornerAngle >= 180) {
+    document.getElementById('miter-val').textContent = '—';
+    document.getElementById('bevel-val').textContent = '—';
+    document.getElementById('angle-note').textContent = 'Enter a wall angle between 1° and 179°.';
     return;
   }
 
@@ -273,10 +277,16 @@ function calcAngles() {
 
   document.getElementById('angle-note').innerHTML =
     dirNote + ' Always test on scrap before cutting your finish pieces.';
-
-  const el = document.getElementById('angle-result');
-  el.classList.remove('hidden');
 }
+
+// Wire up auto-update on every angle input change
+['corner-type', 'corner-angle', 'custom-spring'].forEach(id => {
+  document.getElementById(id).addEventListener('input', calcAngles);
+  document.getElementById(id).addEventListener('change', calcAngles);
+});
+
+// Calculate on load with defaults
+calcAngles();
 
 // Fade-up animations
 const obs = new IntersectionObserver(e => e.forEach(x => {
